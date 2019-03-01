@@ -1,0 +1,38 @@
+service: slack-bot
+
+provider:
+  name: google
+  runtime: nodejs8
+  region: ${self:custom.env.REGION}
+  project: ${self:custom.env.GCP_PROJECT_ID}
+  credentials: ${self:custom.env.PROJECT_BUILD_DIR}/keyfile.dev.json
+  environment: ${file(./config.js):runtimeEnvironment}
+
+plugins:
+  - serverless-google-cloudfunctions
+
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+    - .env
+    - .eslintrc.yml
+    - .npmrc
+    - .nvmrc
+    - config.js
+    - keyfile.json
+    - test/**
+
+functions:
+  vote:
+    handler: vote
+    events:
+      - http: path
+  auth:
+    handler: auth
+    events:
+      - http: path
+
+custom:
+  env: ${file(./config.js):buildEnvironment}

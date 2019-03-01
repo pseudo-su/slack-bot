@@ -1,0 +1,48 @@
+{
+  "name": "slack-bot",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node src/",
+    "dev": "nodemon src/",
+    "test": "jest",
+    "test:snap": "jest --updateSnapshot",
+    "verify": "eslint --max-warnings=0 'src/'",
+    "verify:fix": "eslint --fix --max-warnings=0  'src/'"
+  },
+  "author": "Rophy Tsai <tsaiyl@tw.bm.com>",
+  "license": "Apache v2",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.4.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-nodejs": "^2.0.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-typescript": "^2.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.3.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.0",
+    "jest": "^24.1.0",
+    "nodemon": "^1.18.10",
+    "prettier": "^1.16.4",
+    "proxyquire": "^2.1.0",
+    "serverless": "^1.38.0",
+    "serverless-google-cloudfunctions": "^2.3.2",
+    "sinon": "^7.2.5",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "@google-cloud/datastore": "^3.1.1",
+    "boom": "^7.3.0",
+    "envalid": "^4.2.2",
+    "node-fetch": "^2.3.0",
+    "request": "^2.83.0",
+    "uuid": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=8.x",
+    "npm": ">=6.x",
+    "yarn": "DONT_USE_YARN"
+  }
+}

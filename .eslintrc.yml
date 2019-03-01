@@ -1,0 +1,45 @@
+env:
+  es6: true
+  node: true
+parserOptions:
+  sourceType: script
+  ecmaVersion: 2018  # Supports object rest/spread (Node 6+)
+extends:
+  - eslint:recommended
+  # - typescript
+  - eslint-config-nodejs
+  - prettier
+  - plugin:node/recommended
+plugins:
+  - prettier
+  - node
+  - jest
+rules:
+  prettier/prettier:
+    - warn
+    - singleQuote: true
+      trailingComma: all
+  require-jsdoc:
+    - off
+  typescript/no-use-before-define:
+    - off
+  typescript/no-var-requires:
+    - off
+  node/no-unpublished-require:
+    - off
+
+overrides:
+  - files: ["**/*.test.js"]
+    env: 
+      jest/globals: true
+    rules:
+      jest/no-disabled-tests:
+        - warn
+      jest/no-focused-tests:
+        - error
+      jest/no-identical-title:
+        - error
+      jest/prefer-to-have-length:
+        - warn
+      jest/valid-expect:
+        - error
