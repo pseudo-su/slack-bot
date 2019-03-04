@@ -117,9 +117,16 @@ function createPollText(poll) {
   const lineItems = poll.opts.map((optionName, idx) => {
     const icon = iconMappings[idx + 1];
     const votesForOption = poll.votes[idx];
-    const votes = Object.keys(votesForOption).filter(
-      userId => votesForOption[userId],
-    );
+    const votes = Object.keys(votesForOption)
+      // we only care about displaying votes that are truthy EG: true or ISO date strings
+      .filter(userId => votesForOption[userId])
+      // first sort by UserID so at least the order is deterministic even if we don't store ISO strings
+      .sort()
+      // Sort by the "value" (date/ISO string)
+      .sort(
+        (aKey, bKey) =>
+          new Date(votesForOption[aKey]) - new Date(votesForOption[bKey]),
+      );
     const voteCount = votes.length > 0 ? `\`${votes.length}\`` : '';
     const votesList = votes.map(userId => `<@${userId}>`).join(' ');
     return [`${icon} ${optionName} ${voteCount}`, votesList].join('\n');

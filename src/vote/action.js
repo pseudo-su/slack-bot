@@ -102,11 +102,20 @@ async function actionHandler({ query, method, path, body }) {
 
 async function voteOnPoll({ poll, action, user }) {
   // TODO: different types of poll might have different state changes when voting
-  const clicked = Number(action.value);
+  const selectedOption = Number(action.value);
 
   logger.info(action.value, poll.votes, poll.opts);
 
-  poll.votes[clicked][user.id] = !poll.votes[clicked][user.id];
+  // has the selected option already been voted on by the user?
+  const alreadyVotedOnOption = Boolean(poll.votes[selectedOption][user.id]);
+
+  // Toggle vote on option ON/OFF
+  const newOptionValue = alreadyVotedOnOption
+    ? false
+    : new Date().toISOString();
+
+  // Set it on the poll
+  poll.votes[selectedOption][user.id] = newOptionValue;
 
   return poll;
 }
