@@ -10,13 +10,13 @@ const { actionHandler } = require('./action');
 
 const actionMappings = [
   {
-    path: '/command',
+    path: '/vote/command',
     methods: {
       POST: withSlackResponse(commandHandler),
     },
   },
   {
-    path: '/action',
+    path: '/vote/action',
     methods: {
       POST: withSlackResponse(actionHandler),
     },

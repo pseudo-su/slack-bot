@@ -13,16 +13,6 @@ plugins:
 
 package:
   exclude:
-    - node_modules/**
-    - .gitignore
-    - .git/**
-    - .env
-    - .eslintrc.yml
-    - .npmrc
-    - .nvmrc
-    - config.js
-    - keyfile.json
-    - test/**
 
 functions:
   vote:

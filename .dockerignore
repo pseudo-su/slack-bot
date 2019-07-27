@@ -1,0 +1,9 @@
+node_modules/
+.gitignore
+.git/
+.env
+.env.example
+.npmrc
+.nvmrc
+config.js
+keyfile.json
